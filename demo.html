@@ -128,8 +128,14 @@
         return html
     }
 
-    function loadMarkdown(raw){
-        let html = convert(raw)
+    function loadMarkdown(raw) {
+        localStorage.markdown = raw
+        location.reload()
+    }
+
+    function start() {
+        const TPL = `# One Slide`
+        let html = convert(localStorage.markdown || TPL)
         document.querySelector('.slides').innerHTML = html
         Reveal.initialize({
             controls: true,
@@ -139,8 +145,9 @@
 
             // Learn about plugins: https://revealjs.com/plugins/
             plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight]
-        });
+        })
     }
+    start()
 
 </script>
 
