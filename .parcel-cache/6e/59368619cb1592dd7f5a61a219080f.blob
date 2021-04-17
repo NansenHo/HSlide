@@ -1,0 +1,70 @@
+/* control */
+.control {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 20%;
+    opacity: 0;
+    z-index: 1;
+    transition: 0.6s;
+    }
+
+.control .iconfont {
+    display: inline-block;
+    font-size: 50px;
+    color: #ffffff;
+    margin: 30px;
+    cursor: pointer;
+    }
+
+.control:hover {
+    opacity: 0.88;
+    }
+
+/* menu */
+.menu {
+    position: fixed;
+    left: 0;
+    z-index: 2;
+    width: 220px;
+    height: 100vh;
+    background: #252f2d;
+    color: #fff;
+    font-size: 16px;
+    }
+
+.menu .icon-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    }
+
+.menu .detail {
+    margin-top: 50px;
+    }
+
+.menu .detail .tab {
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    }
+
+.menu .detail .iconfont {
+    margin-right: 4px;
+    }
+
+.menu .detail .content {
+    display: none;
+    position: absolute;
+    left: 220px;
+    width: calc(100vw - 220px);
+    height: 100vh;
+    background: #fff;
+    color: black;
+    top: 0;
+    }
+
+.menu .detail .content.active {
+    display: block;
+    }
