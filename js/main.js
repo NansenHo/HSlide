@@ -74,7 +74,9 @@ const Menu = { // menu 模块
         this.$settingIcon = $('.control .icon-setting')
         this.$menu = $('.menu')
         this.$closeIcon = $('.menu .icon-close')
-        // 命名技巧：如果是 DOM 对象，就用 $name 这种形式，以作区分。
+        this.$$tabs = $$('.menu .tab')
+        this.$$contents = $$('.menu .content')
+        // 命名技巧：如果是 DOM 对象/NodeList，就用 $name/$$name 这种形式，以作区分。
         this.bind()
     },
     bind(){ // 绑定数据
@@ -83,10 +85,16 @@ const Menu = { // menu 模块
             this.$menu.classList.add('open') // xxx.$menu.classList.add('open')
             // 能用 class 来切换的样式变化，尽量用 class 来做。这也方便后期修改样式。
         }
-
         this.$closeIcon.onclick = () => {
             this.$menu.classList.remove('open')
         }
+        this.$$tabs.forEach($tab => $tab.onclick = () => {
+            this.$$tabs.forEach($tab => $tab.classList.remove('active'))
+            $tab.classList.add('active')
+            let index = [...this.$$tabs].indexOf($tab)
+            this.$$contents.forEach($node => $node.classList.remove('active'))
+            this.$$contents[index].classList.add('active')
+        })
     }
 }
 
