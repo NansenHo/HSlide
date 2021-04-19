@@ -1,10 +1,10 @@
 * {
     box-sizing: border-box;
-}
+    }
 
 *:before, *:after {
     box-sizing: border-box;
-}
+    }
 
 /* control */
 .control {
@@ -16,7 +16,7 @@
     opacity: 0;
     z-index: 1;
     transition: 0.6s;
-}
+    }
 
 .control .iconfont {
     display: inline-block;
@@ -24,11 +24,11 @@
     color: #ffffff;
     margin: 30px;
     cursor: pointer;
-}
+    }
 
 .control:hover {
     opacity: 0.88;
-}
+    }
 
 /* menu */
 .menu {
@@ -38,37 +38,41 @@
     width: 220px;
     height: 100vh;
     background: #252f2d;
-    color: #fff;
+    color: #747c7c;
     font-size: 16px;
-    display: none;
-}
+    transform: translateX(-100%); /* 100% 即，元素自己的宽度 */
+    transition: transform .3s;
+    }
 
 .menu.open {
-    display: block;
+    transform: translateX(0);
     }
 
 .menu .icon-close {
     position: absolute;
     right: 10px;
     top: 10px;
-}
+    }
 
 .menu .detail {
     margin-top: 50px;
-}
+    }
 
 .menu .detail .tab {
     display: flex;
     align-items: center;
     padding: 8px 20px;
-}
+    }
+
+.menu .detail .tab.active {
+    color: #fff;
+    }
 
 .menu .detail .iconfont {
     margin-right: 4px;
-}
+    }
 
 .menu .detail .content {
-    display: none;
     position: absolute;
     left: 220px;
     width: calc(100vw - 220px);
@@ -76,25 +80,27 @@
     background: #212a29;
     color: #fff;
     top: 0;
-}
+    transform: translateX(100vw);
+    transition: transform .3s;
+    }
 
-.menu .detail .content.active {
-    display: block;
-}
+.menu.open .detail .content.active { /* .menu.open 且 .content.active ，才会有下面的样式 */
+    transform: translateX(0);
+    }
 
 .menu .detail .content .header {
     font-size: 40px;
     padding: 20px;
     border-bottom: 1px solid #435315;
-}
+    }
 
 .menu .detail .content .body {
     padding: 20px;
-}
+    }
 
 .menu .detail .content textarea {
     width: 100%;
     height: 400px;
-}
+    }
 
 /*# sourceMappingURL=/main.6f413603.css.map */

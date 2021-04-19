@@ -118,6 +118,18 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/main.js":[function(require,module,exports) {
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 var $ = function $(s) {
   return document.querySelector(s);
 };
@@ -172,7 +184,9 @@ var Menu = {
     console.log('menu init...');
     this.$settingIcon = $('.control .icon-setting');
     this.$menu = $('.menu');
-    this.$closeIcon = $('.menu .icon-close'); // 命名技巧：如果是 DOM 对象，就用 $name 这种形式，以作区分。
+    this.$closeIcon = $('.menu .icon-close');
+    this.$$tabs = $$('.menu .tab');
+    this.$$contents = $$('.menu .content'); // 命名技巧：如果是 DOM 对象/NodeList，就用 $name/$$name 这种形式，以作区分。
 
     this.bind();
   },
@@ -190,12 +204,58 @@ var Menu = {
     this.$closeIcon.onclick = function () {
       _this.$menu.classList.remove('open');
     };
+
+    this.$$tabs.forEach(function ($tab) {
+      return $tab.onclick = function () {
+        _this.$$tabs.forEach(function ($tab) {
+          return $tab.classList.remove('active');
+        });
+
+        $tab.classList.add('active');
+
+        var index = _toConsumableArray(_this.$$tabs).indexOf($tab);
+
+        _this.$$contents.forEach(function ($node) {
+          return $node.classList.remove('active');
+        });
+
+        _this.$$contents[index].classList.add('active');
+      };
+    });
   }
 };
 var Editor = {
   init: function init() {
     // 初始化
     console.log('editor init...');
+    this.$editInput = $('.editor textarea');
+    this.$saveBtn = $('.editor .btn-save');
+    this.$slideContainer = $('.slides');
+    this.markdown = localStorage.markdown || '# One Slide'; // 预加载
+
+    this.bind();
+    this.start(); // 解析 markdown 并启动
+  },
+  bind: function bind() {
+    var _this2 = this;
+
+    this.$saveBtn.onclick = function () {
+      localStorage.markdown = _this2.$editInput.value;
+      location.reload();
+    };
+  },
+  start: function start() {
+    this.$editInput.value = this.markdown;
+    console.log();
+    this.$slideContainer.innerHTML = convert(this.markdown);
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      center: true,
+      hash: true,
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight]
+    });
   }
 };
 var App = {
@@ -207,35 +267,6 @@ var App = {
   }
 };
 App.init(Menu, Editor); // 初始化 App 的时候也初始化 menu
-
-function loadMarkdown(raw) {
-  localStorage.markdown = raw;
-  location.reload();
-} // 把用户输入的 raw 存进 localStorage 并刷新页面
-
-
-function start() {
-  var TPL = "# One Slide";
-  var html = convert(localStorage.markdown || TPL);
-  document.querySelector('.slides').innerHTML = html;
-  Reveal.initialize({
-    controls: true,
-    progress: true,
-    center: true,
-    hash: true,
-    // Learn about plugins: https://revealjs.com/plugins/
-    plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight]
-  });
-} // 看有没有 localStorage，将 localStorage/TPL 赋值给 html ，
-// 然后把 html 放进 .slides 里面，然后渲染页面。
-
-
-start(); // 每次进来都会先运行 start() 函数
-// 用户进来先会触发 start() ，此时没有 localStorage 所以页面上
-// 只有 TPL，然后用户开始写 markdown，用户写好点击保存，会触发
-// loadMarkdown，loadMarkdown 将用户的 markdown 保存进
-// localStorage.markdown ，然后重新刷新页面，又会再执行一次 start() ，
-// 这次触发 start() ，页面上就会显示由用户刚保存的 markdown 生成的页面。
 },{}],"../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -264,7 +295,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57354" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54497" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
