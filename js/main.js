@@ -1,12 +1,12 @@
+const $ = s => document.querySelector(s)
+const $$ = s => document.querySelectorAll(s)
 const isMain = str => (/^#{1,2}(?!#)/).test(str)
 const isSub = str => (/^#{3}(?!#)/).test(str)
-
-function convert(raw) {
+const convert = raw => {
     let arr = raw.split(/\n(?=\s*#)/).filter(s => s != "").map(s => s.trim())
 
     let html = ''
     for (let i = 0; i < arr.length; i++) {
-
         if (arr[i + 1] !== undefined) {
             if (isMain(arr[i]) && isMain(arr[i + 1])) {
                 html += `
@@ -64,10 +64,53 @@ function convert(raw) {
                     `
             }
         }
-
     }
     return html
 } // // 把 markdown 变成符合要求的 HTML
+
+const Menu = { // menu 模块
+    init(){
+        console.log('menu init...')
+        this.$settingIcon = $('.control .icon-setting')
+        this.$menu = $('.menu')
+        this.$closeIcon = $('.menu .icon-close')
+        // 命名技巧：如果是 DOM 对象，就用 $name 这种形式，以作区分。
+        this.bind()
+    },
+    bind(){ // 绑定数据
+        // let xxx = this // 不用箭头函数也可以一开始将 this 保存下来
+        this.$settingIcon.onclick = () => {
+            this.$menu.classList.add('open') // xxx.$menu.classList.add('open')
+            // 能用 class 来切换的样式变化，尽量用 class 来做。这也方便后期修改样式。
+        }
+
+        this.$closeIcon.onclick = () => {
+            this.$menu.classList.remove('open')
+        }
+    }
+}
+
+const Editor = {
+    init(){ // 初始化
+        console.log('editor init...')
+    },
+}
+
+
+const App = { // App 模块
+    init(){
+        [...arguments].forEach(Module => Module.init())
+    }
+}
+
+App.init(Menu, Editor) // 初始化 App 的时候也初始化 menu
+
+
+
+
+
+
+
 
 function loadMarkdown(raw) {
     localStorage.markdown = raw

@@ -40,7 +40,12 @@
     background: #252f2d;
     color: #fff;
     font-size: 16px;
+    display: none;
 }
+
+.menu.open {
+    display: block;
+    }
 
 .menu .icon-close {
     position: absolute;
