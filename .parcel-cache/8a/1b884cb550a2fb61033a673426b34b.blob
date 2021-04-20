@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>reveal.js – The HTML Presentation Framework</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/demo.HASH_REF_24f46579c8f0bc11e9b1195db93e0b06.css">
+    <link rel="stylesheet" href="/demo.HASH_REF_7ca5c06a45b5c783de70f836cfd37dc0.css">
+    <!--    <link rel="stylesheet" href="dist/theme/blood.css" id="theme">-->
+    <!-- reset.css & reveal.css & theme/black.css-->
+
+    <link rel="stylesheet" href="/demo.HASH_REF_3dd0f1305b7813128fc1019b984dd632.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2491630_sfdtd7ltxdb.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="/demo.HASH_REF_233c7b81e1587bed7d24ea0f41a7529f.css" id="highlight-theme">
+</head>
+
+<body>
+
+<div class="control">
+    <span class="iconfont icon-setting"></span>
+</div>
+<div class="menu">
+    <span class="iconfont icon-close"></span>
+    <div class="detail">
+        <div class="tab active">
+            <span class="iconfont icon-edit"></span>
+            内容编辑
+        </div>
+        <div class="tab">
+            <span class="iconfont icon-theme"></span>
+            主题与特效
+        </div>
+        <div class="tab">
+            <span class="iconfont icon-download"></span>
+            下载PDF
+        </div>
+        <div class="content active">
+            <div class="header">Edit</div>
+            <div class="body editor">
+                <textarea></textarea>
+                <div>
+                    <button class="btn-save">save</button>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header">Theme</div>
+            <div class="body theme">
+                <h2>Theme</h2>
+                <div class="themes">
+                    <figure data-theme="beige">
+                        <img src="/beige.HASH_REF_b90b5623ff652d13e5d93c92b486d291.jpg" alt="beige">
+                        <figcaption>beige</figcaption>
+                    </figure>
+                    <figure data-theme="black">
+                        <img src="/black.HASH_REF_f0ca09484d42b0dc8b3cfdbad4fd15bd.jpg" alt="black">
+                        <figcaption>black</figcaption>
+                    </figure>
+                    <figure data-theme="blood">
+                        <img src="/blood.HASH_REF_9133d9f2c7039f7a4f22680041f41b34.jpg" alt="blood">
+                        <figcaption>blood</figcaption>
+                    </figure>
+                    <figure data-theme="league">
+                        <img src="/league.HASH_REF_68b3a442e2ce246ad885ebd5efd21c15.jpg" alt="league">
+                        <figcaption>league</figcaption>
+                    </figure>
+                    <figure data-theme="moon">
+                        <img src="/moon.HASH_REF_cd5358ca2d87283f7ca5c801a92c2190.jpg" alt="moon">
+                        <figcaption>moon</figcaption>
+                    </figure>
+                    <figure data-theme="night">
+                        <img src="/night.HASH_REF_a7036c340f2503cdedde3349ba36f2cf.jpg" alt="night">
+                        <figcaption>night</figcaption>
+                    </figure>
+                    <figure data-theme="serif">
+                        <img src="/serif.HASH_REF_39143654c25f24042323cc41be0a4ac4.jpg" alt="serif">
+                        <figcaption>serif</figcaption>
+                    </figure>
+                    <figure data-theme="simple">
+                        <img src="/simple.HASH_REF_967910d423486c1486c537997e059909.jpg" alt="simple">
+                        <figcaption>simple</figcaption>
+                    </figure>
+                    <figure data-theme="sky">
+                        <img src="/sky.HASH_REF_d742057a5e52136ecbcffe30315099fb.jpg" alt="sky">
+                        <figcaption>sky</figcaption>
+                    </figure>
+                    <figure data-theme="solarized">
+                        <img src="/solarized.HASH_REF_f381fbce5e77c2aeb8781c0b220fdd46.jpg" alt="solarized">
+                        <figcaption>solarized</figcaption>
+                    </figure>
+                    <figure data-theme="white">
+                        <img src="/white.HASH_REF_a37c5ee15024fe2c2c6c41720b2fcecb.jpg" alt="white">
+                        <figcaption>white</figcaption>
+                    </figure>
+                </div>
+                <h2 class="h2-Animation">Animation</h2>
+                <select class="transition">
+                    <option value="slide">slide</option>
+                    <option value="fade">fade</option>
+                    <option value="convex">convex</option>
+                    <option value="concave">concave</option>
+                    <option value="zoom">zoom</option>
+                    <option value="none">none</option>
+                </select>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header">Download</div>
+            <div class="editor download">
+                <p>PDF Download</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+    </div>
+</div>
+
+<script src="/demo.HASH_REF_df451b235d37aac697ed072c291785ff.js"></script>
+<script src="/demo.HASH_REF_2f7cb95d42241f3c24d8c2b5c241af47.js"></script>
+<script src="/demo.HASH_REF_68556f43355d537b9f82831c39dab547.js"></script>
+<script src="/demo.HASH_REF_e8c4814ba3dcf9859a9285604ecedc03.js"></script>
+<script src="/demo.HASH_REF_7ad5806acfdf4d5fb51c3ca7103312aa.js"></script>
+<script src="/demo.HASH_REF_82023e2bdfeea2d9d282fc188186fbba.js"></script>
+
+<script src="/demo.HASH_REF_0cac6c29c544aecf1ca11c8c74f86353.js"></script>
+
+</body>
+</html>

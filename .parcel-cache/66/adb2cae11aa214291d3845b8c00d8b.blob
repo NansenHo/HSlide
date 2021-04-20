@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>reveal.js – The HTML Presentation Framework</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="e75a4162c03445f93a1ad3a8a2c433f4">
+    <link rel="stylesheet" href="e0256945eb718d64fc30e8ecbf147cfd">
+    <!--    <link rel="stylesheet" href="dist/theme/blood.css" id="theme">-->
+    <!-- reset.css & reveal.css & theme/black.css-->
+
+    <link rel="stylesheet" href="3f121a4919709b69dddddc0eac10220a">
+    <link rel="stylesheet" href="30b66b85b934f371457c811342e4083f">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="ad3ea05f25137b3be0abee15f3964088" id="highlight-theme">
+</head>
+
+<body>
+
+<div class="control">
+    <span class="iconfont icon-setting"></span>
+</div>
+<div class="menu">
+    <span class="iconfont icon-close"></span>
+    <div class="detail">
+        <div class="tab active">
+            <span class="iconfont icon-edit"></span>
+            内容编辑
+        </div>
+        <div class="tab">
+            <span class="iconfont icon-theme"></span>
+            主题与特效
+        </div>
+        <div class="tab">
+            <span class="iconfont icon-download"></span>
+            下载PDF
+        </div>
+        <div class="content active">
+            <div class="header">Edit</div>
+            <div class="body editor">
+                <textarea></textarea>
+                <div>
+                    <button class="btn-save">save</button>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header">Theme</div>
+            <div class="body theme">
+                <h2>Theme</h2>
+                <div class="themes">
+                    <figure data-theme="beige">
+                        <img src="f903359fb491500323f32685ff942aac" alt="beige">
+                        <figcaption>beige</figcaption>
+                    </figure>
+                    <figure data-theme="black">
+                        <img src="1f75f123b6f41397d6f6265c89579127" alt="black">
+                        <figcaption>black</figcaption>
+                    </figure>
+                    <figure data-theme="blood">
+                        <img src="1be9cda879b372a292bd29e00b473b5b" alt="blood">
+                        <figcaption>blood</figcaption>
+                    </figure>
+                    <figure data-theme="league">
+                        <img src="1fb33b0b0321558d3fd5794bcf5fa2bf" alt="league">
+                        <figcaption>league</figcaption>
+                    </figure>
+                    <figure data-theme="moon">
+                        <img src="4b66608a111b56e4fa33394926101e11" alt="moon">
+                        <figcaption>moon</figcaption>
+                    </figure>
+                    <figure data-theme="night">
+                        <img src="955ef0bf705621c4d677de575e0b24c2" alt="night">
+                        <figcaption>night</figcaption>
+                    </figure>
+                    <figure data-theme="serif">
+                        <img src="0f757ce1a7ac77aa4b9692f703bcf632" alt="serif">
+                        <figcaption>serif</figcaption>
+                    </figure>
+                    <figure data-theme="simple">
+                        <img src="4a07dc29a9ab6a57d9affed62b5be5c8" alt="simple">
+                        <figcaption>simple</figcaption>
+                    </figure>
+                    <figure data-theme="sky">
+                        <img src="2259871c4cd772ef5b84ac8a584e867d" alt="sky">
+                        <figcaption>sky</figcaption>
+                    </figure>
+                    <figure data-theme="solarized">
+                        <img src="96b9c02e669a2685beb504daaa8f635e" alt="solarized">
+                        <figcaption>solarized</figcaption>
+                    </figure>
+                    <figure data-theme="white">
+                        <img src="af4d8936563d3160b7f2713b8734754f" alt="white">
+                        <figcaption>white</figcaption>
+                    </figure>
+                </div>
+                <h2 class="h2-Animation">Animation</h2>
+                <select class="transition">
+                    <option value="slide">slide</option>
+                    <option value="fade">fade</option>
+                    <option value="convex">convex</option>
+                    <option value="concave">concave</option>
+                    <option value="zoom">zoom</option>
+                    <option value="none">none</option>
+                </select>
+            </div>
+        </div>
+        <div class="content">
+            <div class="header">Download</div>
+            <div class="editor download">
+                <p>PDF Download</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="reveal">
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+    </div>
+</div>
+
+<script src="25242472c283be0ba69116e05f4d37a7"></script>
+<script src="1641ac659b45f93a34502ef317c45bfb"></script>
+<script src="27f7a90b927c8c35d87c5b4c8628d13f"></script>
+<script src="b9228fe282592f0036261b74b0751c66"></script>
+<script src="09fbf61db52200bc501eadb0d55bee86"></script>
+<script src="816510c930b4461900f9e47bfb95d6a4"></script>
+
+<script src="4cb63a30e655d7d310d39351b6cd5ba7"></script>
+
+</body>
+</html>
