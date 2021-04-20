@@ -132,6 +132,7 @@ const Editor = {
             progress: true,
             center: true,
             hash: true,
+            transition:  localStorage.transition || 'slide',
             // Learn about plugins: https://revealjs.com/plugins/
             plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight]
         })
@@ -141,6 +142,7 @@ const Editor = {
 const Theme = {
     init(){
         this.$$figures = $$('.themes figure')
+        this.$transition = $('.transition')
         this.bind()
         this.loadTheme()
     },
@@ -150,6 +152,10 @@ const Theme = {
             $figure.classList.add('select')
             this.setTheme($figure.dataset.theme)
         })
+        this.$transition.onchange = function(){
+            localStorage.transition = this.value
+            location.reload()
+        }
     },
     setTheme(theme){
         localStorage.theme = theme
@@ -164,6 +170,7 @@ const Theme = {
         document.head.appendChild($link);
         $(`.themes figure[data-theme = ${theme}]`).classList.add('select')
         // [...this.$$figures].find($figure => $figure.dataset.theme === theme).classList.add('select')
+        this.localStorage.value = localStorage.value || 'slide'
     }
 }
 
