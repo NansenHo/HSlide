@@ -108,7 +108,7 @@ const Editor = {
 # One Slide
 开始使用，请将鼠标放至页面左上角
 
-## 本产品需要用 markdown 来使用
+## 本产品需要用 markdown 来编辑
 该[教程](https://www.jianshu.com/p/191d1e21f7ed)可以让您在 10 分钟内轻松掌握 Markdown 
 
 ### 第三页
@@ -161,7 +161,9 @@ const Theme = {
         $link.rel = 'stylesheet'
         $link.href = `dist/theme/${theme}.css`
         $link.id = "theme"
-        document.head.appendChild($link)
+        document.head.appendChild($link);
+        $(`.themes figure[data-theme = ${theme}]`).classList.add('select')
+        // [...this.$$figures].find($figure => $figure.dataset.theme === theme).classList.add('select')
     }
 }
 
