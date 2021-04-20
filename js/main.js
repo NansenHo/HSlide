@@ -104,7 +104,17 @@ const Editor = {
         this.$editInput = $('.editor textarea')
         this.$saveBtn = $('.editor .btn-save')
         this.$slideContainer = $('.slides')
-        this.markdown = localStorage.markdown || '# One Slide' // 预加载
+        let defaultNote = `
+# One Slide
+开始使用，请将鼠标放至页面左上角
+
+## 本产品需要用 markdown 来使用
+该[教程](https://www.jianshu.com/p/191d1e21f7ed)可以让您在 10 分钟内轻松掌握 Markdown 
+
+### 第三页
+
+`
+        this.markdown = localStorage.markdown || defaultNote // 预加载
         this.bind()
         this.start() // 解析 markdown 并启动
     },
@@ -128,6 +138,32 @@ const Editor = {
     }
 }
 
+const Theme = {
+    init(){
+        this.$$figures = $$('.themes figure')
+        this.bind()
+        this.loadTheme()
+    },
+    bind(){
+        this.$$figures.forEach($figure => $figure.onclick = () => {
+            this.$$figures.forEach($item => $item.classList.remove('select'))
+            $figure.classList.add('select')
+            this.setTheme($figure.dataset.theme)
+        })
+    },
+    setTheme(theme){
+        localStorage.theme = theme
+        location.reload()
+    },
+    loadTheme(){
+        let theme = localStorage.theme || 'blood'
+        let $link = document.createElement('link')
+        $link.rel = 'stylesheet'
+        $link.href = `dist/theme/${theme}.css`
+        $link.id = "theme"
+        document.head.appendChild($link)
+    }
+}
 
 const App = { // App 模块
     init(){
@@ -135,6 +171,6 @@ const App = { // App 模块
     }
 }
 
-App.init(Menu, Editor) // 初始化 App 的时候也初始化 menu
+App.init(Menu, Editor, Theme) // 初始化 App 的时候也初始化 menu
 
 

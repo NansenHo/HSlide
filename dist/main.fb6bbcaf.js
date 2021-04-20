@@ -231,7 +231,8 @@ var Editor = {
     this.$editInput = $('.editor textarea');
     this.$saveBtn = $('.editor .btn-save');
     this.$slideContainer = $('.slides');
-    this.markdown = localStorage.markdown || '# One Slide'; // 预加载
+    var defaultNote = "\n# One Slide";
+    this.markdown = localStorage.markdown || defaultNote; // 预加载
 
     this.bind();
     this.start(); // 解析 markdown 并启动
@@ -246,7 +247,6 @@ var Editor = {
   },
   start: function start() {
     this.$editInput.value = this.markdown;
-    console.log();
     this.$slideContainer.innerHTML = convert(this.markdown);
     Reveal.initialize({
       controls: true,
@@ -295,7 +295,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54497" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55598" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -89,6 +89,7 @@ textarea {
     top: 0;
     transform: translateX(100vw);
     transition: transform .3s;
+    overflow: scroll;
     }
 
 .menu.open .detail .content.active { /* .menu.open 且 .content.active ，才会有下面的样式 */
@@ -128,4 +129,29 @@ textarea {
 
 .menu .detail .content .btn-save:hover {
     opacity: 1;
+    }
+
+.menu .detail .content .themes {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    }
+
+.menu .detail .content figure {
+    margin-bottom: 10px;
+    margin-right: 6px;
+    margin-left: 6px;
+    text-align: center;
+    border: 4px transparent solid;
+    transition: .3s;
+    }
+
+.menu .detail .content figure img{
+    width: 160px;
+    height: 120px;
+    }
+
+.menu .detail .content figure.select {
+    border: 4px white solid;
+    cursor: pointer;
     }
