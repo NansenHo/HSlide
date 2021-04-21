@@ -37,6 +37,10 @@ textarea {
     opacity: 0.88;
     }
 
+.reveal.left-top section {
+    text-align: left;
+    }
+
 /* menu */
 .menu {
     position: fixed;

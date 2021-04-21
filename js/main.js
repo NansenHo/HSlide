@@ -3,7 +3,7 @@ const $$ = s => document.querySelectorAll(s)
 const isMain = str => (/^#{1,2}(?!#)/).test(str)
 const isSub = str => (/^#{3}(?!#)/).test(str)
 const convert = raw => {
-    let arr = raw.split(/\n(?=\s*#)/).filter(s => s != "").map(s => s.trim())
+    let arr = raw.split(/\n(?=\s*#{1,3}[^#])/).filter(s => s != "").map(s => s.trim())
 
     let html = ''
     for (let i = 0; i < arr.length; i++) {
@@ -130,7 +130,7 @@ const Editor = {
         Reveal.initialize({
             controls: true,
             progress: true,
-            center: true,
+            center: localStorage.align === "left-top" ? false : true,
             hash: true,
             transition:  localStorage.transition || 'slide',
             // Learn about plugins: https://revealjs.com/plugins/
@@ -143,6 +143,9 @@ const Theme = {
     init(){
         this.$$figures = $$('.themes figure')
         this.$transition = $('.transition')
+        this.$align = $('.theme .align')
+        this.$reveal = $('.reveal')
+        console.log(this.$reveal);
         this.bind()
         this.loadTheme()
     },
@@ -154,6 +157,10 @@ const Theme = {
         })
         this.$transition.onchange = function(){
             localStorage.transition = this.value
+            location.reload()
+        }
+        this.$align.onchange = function() {
+            localStorage.align = this.value
             location.reload()
         }
     },
@@ -170,7 +177,10 @@ const Theme = {
         document.head.appendChild($link);
         $(`.themes figure[data-theme = ${theme}]`).classList.add('select')
         // [...this.$$figures].find($figure => $figure.dataset.theme === theme).classList.add('select')
-        this.localStorage.value = localStorage.value || 'slide'
+        this.$transition.value = localStorage.transition || 'slide'
+        this.$align.value = localStorage.align || 'center'
+        this.$reveal.classList.add(this.$align.value)
+        console.log(this.$align.value);
     }
 }
 
