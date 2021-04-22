@@ -69,7 +69,7 @@ const convert = raw => {
 } // // 把 markdown 变成符合要求的 HTML
 
 const Menu = { // menu 模块
-    init(){
+    init() {
         console.log('menu init...')
         this.$settingIcon = $('.control .icon-setting')
         this.$menu = $('.menu')
@@ -79,7 +79,7 @@ const Menu = { // menu 模块
         // 命名技巧：如果是 DOM 对象/NodeList，就用 $name/$$name 这种形式，以作区分。
         this.bind()
     },
-    bind(){ // 绑定数据
+    bind() { // 绑定数据
         // let xxx = this // 不用箭头函数也可以一开始将 this 保存下来
         this.$settingIcon.onclick = () => {
             this.$menu.classList.add('open') // xxx.$menu.classList.add('open')
@@ -99,7 +99,7 @@ const Menu = { // menu 模块
 }
 
 const Editor = {
-    init(){ // 初始化
+    init() { // 初始化
         console.log('editor init...')
         this.$editInput = $('.editor textarea')
         this.$saveBtn = $('.editor .btn-save')
@@ -118,13 +118,13 @@ const Editor = {
         this.bind()
         this.start() // 解析 markdown 并启动
     },
-    bind(){
+    bind() {
         this.$saveBtn.onclick = () => {
             localStorage.markdown = this.$editInput.value
             location.reload()
         }
     },
-    start(){
+    start() {
         this.$editInput.value = this.markdown
         this.$slideContainer.innerHTML = convert(this.markdown)
         Reveal.initialize({
@@ -132,7 +132,7 @@ const Editor = {
             progress: true,
             center: localStorage.align === "left-top" ? false : true,
             hash: true,
-            transition:  localStorage.transition || 'slide',
+            transition: localStorage.transition || 'slide',
             // Learn about plugins: https://revealjs.com/plugins/
             plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight]
         })
@@ -140,7 +140,7 @@ const Editor = {
 }
 
 const Theme = {
-    init(){
+    init() {
         this.$$figures = $$('.themes figure')
         this.$transition = $('.transition')
         this.$align = $('.theme .align')
@@ -149,26 +149,26 @@ const Theme = {
         this.bind()
         this.loadTheme()
     },
-    bind(){
+    bind() {
         this.$$figures.forEach($figure => $figure.onclick = () => {
             this.$$figures.forEach($item => $item.classList.remove('select'))
             $figure.classList.add('select')
             this.setTheme($figure.dataset.theme)
         })
-        this.$transition.onchange = function(){
+        this.$transition.onchange = function () {
             localStorage.transition = this.value
             location.reload()
         }
-        this.$align.onchange = function() {
+        this.$align.onchange = function () {
             localStorage.align = this.value
             location.reload()
         }
     },
-    setTheme(theme){
+    setTheme(theme) {
         localStorage.theme = theme
         location.reload()
     },
-    loadTheme(){
+    loadTheme() {
         let theme = localStorage.theme || 'blood'
         let $link = document.createElement('link')
         $link.rel = 'stylesheet'
@@ -185,20 +185,24 @@ const Theme = {
 }
 
 const Print = {
-    init(){
+    init() {
         this.$download = $('.download')
         this.bind()
         this.start()
     },
-    bind(){
+    bind() {
         this.$download.addEventListener('click', () => {
             let $link = document.createElement('a')
             $link.setAttribute('target', '_blank')
-            $link.setAttribute('href', location.href + '?print-pdf' )
+            if (location.href.includes('#/')) {
+                $link.setAttribute('href', location.href.replace(/#\/.+/, '?print-pdf'))
+            } else {
+                $link.setAttribute('href', location.href + '?print-pdf')
+            }
             $link.click()
         })
     },
-    start(){
+    start() {
         let link = document.createElement('link')
         link.rel = 'stylesheet'
         link.type = 'text/css'
@@ -213,7 +217,7 @@ const Print = {
 }
 
 const App = { // App 模块
-    init(){
+    init() {
         [...arguments].forEach(Module => Module.init())
     }
 }
