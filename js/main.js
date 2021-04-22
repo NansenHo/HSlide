@@ -184,12 +184,40 @@ const Theme = {
     }
 }
 
+const Print = {
+    init(){
+        this.$download = $('.download')
+        this.bind()
+        this.start()
+    },
+    bind(){
+        this.$download.addEventListener('click', () => {
+            let $link = document.createElement('a')
+            $link.setAttribute('target', '_blank')
+            $link.setAttribute('href', location.href + '?print-pdf' )
+            $link.click()
+        })
+    },
+    start(){
+        let link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.type = 'text/css'
+        if (window.location.search.match(/print-pdf/gi)) {
+            link.href = 'css/print/pdf.css'
+            window.print()
+        } else {
+            link.href = 'css/print/paper.css'
+        }
+        document.head.appendChild(link)
+    }
+}
+
 const App = { // App 模块
     init(){
         [...arguments].forEach(Module => Module.init())
     }
 }
 
-App.init(Menu, Editor, Theme) // 初始化 App 的时候也初始化 menu
+App.init(Menu, Editor, Theme, Print) // 初始化 App 的时候也初始化 menu
 
 

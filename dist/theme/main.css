@@ -37,7 +37,8 @@ textarea {
     opacity: 0.88;
     }
 
-.reveal.left-top section {
+
+.reveal.left-top .slides section {
     text-align: left;
     }
 
