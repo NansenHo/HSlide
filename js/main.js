@@ -98,6 +98,58 @@ const Menu = { // menu 模块
     }
 }
 
+const ImgUpload = {
+    init() {
+        this.$fileInput = $('.input-file')
+        this.$textarea = $('.editor textarea')
+        console.log(this.$fileInput);
+
+        AV.init({
+            appId: "JXVpQHen5GQwmLawXs2voCvu-gzGzoHsz",
+            appKey: "29rOT3C7WRXnFCji5jBazfWF",
+            serverURLs: "https://jxvpqhen.lc-cn-n1-shared.com"
+        })
+
+        this.bind()
+    },
+    bind() {
+        let $this = this
+        this.$fileInput.onchange = function () {
+            if (this.files.length > 0) {
+                let localFile = this.files[0]
+                console.log(localFile)
+                if (localFile.size / 1048576 > 2) {
+                    alert('文件不能超过2M')
+                    return
+                }
+                $this.insertText(`![上传中，进度0%]()`)
+                let avFile = new AV.File(encodeURI(localFile.name), localFile)
+                avFile.save({
+                    keepFileName: true,
+                    onprogress(progress) {
+                        console.log(progress.percent)
+                        $this.insertText(`![上传中，进度${progress.percent}%]()`)
+                    }
+                }).then(file => {
+                    console.log('文件保存完成')
+                    console.log(file)
+                    let text = `![${file.attributes.name}](${file.attributes.url}?imageView2/0/w/800/h/600)`
+                    $this.insertText(text)
+                }).catch(err => console.log(err))
+            }
+        }
+    },
+    insertText(text = '') {
+        let start = this.$textarea.selectionStart
+        let end = this.$textarea.selectionEnd
+        let oldText = this.$textarea.value
+
+        this.$textarea.value = `${oldText.substring(0, start)}${text} ${oldText.substring(end)}`
+        this.$textarea.focus()
+        this.$textarea.setSelectionRange(start, start + text.length)
+    }
+}
+
 const Editor = {
     init() { // 初始化
         console.log('editor init...')
@@ -222,6 +274,6 @@ const App = { // App 模块
     }
 }
 
-App.init(Menu, Editor, Theme, Print) // 初始化 App 的时候也初始化 menu
+App.init(Menu, Editor, Theme, Print, ImgUpload) // 初始化 App 的时候也初始化 menu
 
 

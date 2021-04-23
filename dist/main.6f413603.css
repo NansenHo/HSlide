@@ -37,11 +37,16 @@ textarea {
     opacity: 0.88;
     }
 
+
+.reveal.left-top .slides section {
+    text-align: left;
+    }
+
 /* menu */
 .menu {
     position: fixed;
     left: 0;
-    z-index: 2;
+    z-index: 20;
     width: 220px;
     height: 100vh;
     background: #252f2d;
@@ -59,6 +64,7 @@ textarea {
     position: absolute;
     right: 10px;
     top: 10px;
+    cursor: pointer;
     }
 
 .menu .detail {
@@ -69,6 +75,7 @@ textarea {
     display: flex;
     align-items: center;
     padding: 8px 20px;
+    cursor: pointer;
     }
 
 .menu .detail .tab.active {
@@ -89,6 +96,7 @@ textarea {
     top: 0;
     transform: translateX(100vw);
     transition: transform .3s;
+    overflow: scroll;
     }
 
 .menu.open .detail .content.active { /* .menu.open 且 .content.active ，才会有下面的样式 */
@@ -128,6 +136,62 @@ textarea {
 
 .menu .detail .content .btn-save:hover {
     opacity: 1;
+    }
+
+.menu .detail .content .themes {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    }
+
+.menu .detail .content figure {
+    margin-bottom: 10px;
+    margin-right: 6px;
+    margin-left: 6px;
+    text-align: center;
+    border: 4px transparent solid;
+    transition: .3s;
+    }
+
+.menu .detail .content figure img{
+    width: 160px;
+    height: 120px;
+    }
+
+.menu .detail .content figure.select {
+    border: 4px white solid;
+    cursor: pointer;
+    }
+
+.menu .theme .h2-Animation {
+    margin-bottom: 10px;
+    }
+
+*{
+    outline: 1px solid #0000ff;
+    }
+
+.menu .editor .label.uploader {
+    cursor: pointer;
+    margin: 0 5px;
+    background: #48484e;
+    color: #d9dfdf;
+    border-radius: 4px;
+    padding: 4px 6px;
+    opacity: .65;
+    transition: all .1s;
+    }
+
+.menu .editor .label.uploader:hover {
+    opacity: 1;
+    }
+
+.menu .editor [type=file] {
+    display: none;
+    }
+
+.menu .editor .content .btn-save {
+    margin-right: 5px;
     }
 
 /*# sourceMappingURL=/main.6f413603.css.map */

@@ -147,7 +147,7 @@ var isSub = function isSub(str) {
 };
 
 var convert = function convert(raw) {
-  var arr = raw.split(/\n(?=\s*#)/).filter(function (s) {
+  var arr = raw.split(/\n(?=\s*#{1,3}[^#])/).filter(function (s) {
     return s != "";
   }).map(function (s) {
     return s.trim();
@@ -224,6 +224,60 @@ var Menu = {
     });
   }
 };
+var ImgUpload = {
+  init: function init() {
+    this.$fileInput = $('.input-file');
+    this.$textarea = $('.editor textarea');
+    console.log(this.$fileInput);
+    AV.init({
+      appId: "JXVpQHen5GQwmLawXs2voCvu-gzGzoHsz",
+      appKey: "29rOT3C7WRXnFCji5jBazfWF",
+      serverURLs: "https://jxvpqhen.lc-cn-n1-shared.com"
+    });
+    this.bind();
+  },
+  bind: function bind() {
+    var $this = this;
+
+    this.$fileInput.onchange = function () {
+      if (this.files.length > 0) {
+        var localFile = this.files[0];
+        console.log(localFile);
+
+        if (localFile.size / 1048576 > 2) {
+          alert('文件不能超过2M');
+          return;
+        }
+
+        $this.insertText("![\u4E0A\u4F20\u4E2D\uFF0C\u8FDB\u5EA60%]()");
+        var avFile = new AV.File(encodeURI(localFile.name), localFile);
+        avFile.save({
+          keepFileName: true,
+          onprogress: function onprogress(progress) {
+            console.log(progress.percent);
+            $this.insertText("![\u4E0A\u4F20\u4E2D\uFF0C\u8FDB\u5EA6".concat(progress.percent, "%]()"));
+          }
+        }).then(function (file) {
+          console.log('文件保存完成');
+          console.log(file);
+          var text = "![".concat(file.attributes.name, "](").concat(file.attributes.url, "?imageView2/0/w/800/h/600)");
+          $this.insertText(text);
+        }).catch(function (err) {
+          return console.log(err);
+        });
+      }
+    };
+  },
+  insertText: function insertText() {
+    var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+    var start = this.$textarea.selectionStart;
+    var end = this.$textarea.selectionEnd;
+    var oldText = this.$textarea.value;
+    this.$textarea.value = "".concat(oldText.substring(0, start)).concat(text, " ").concat(oldText.substring(end));
+    this.$textarea.focus();
+    this.$textarea.setSelectionRange(start, start + text.length);
+  }
+};
 var Editor = {
   init: function init() {
     // 初始化
@@ -231,7 +285,7 @@ var Editor = {
     this.$editInput = $('.editor textarea');
     this.$saveBtn = $('.editor .btn-save');
     this.$slideContainer = $('.slides');
-    var defaultNote = "\n# One Slide";
+    var defaultNote = "\n# One Slide\n\u5F00\u59CB\u4F7F\u7528\uFF0C\u8BF7\u5C06\u9F20\u6807\u653E\u81F3\u9875\u9762\u5DE6\u4E0A\u89D2\n\n## \u672C\u4EA7\u54C1\u9700\u8981\u7528 markdown \u6765\u7F16\u8F91\n\u8BE5[\u6559\u7A0B](https://www.jianshu.com/p/191d1e21f7ed)\u53EF\u4EE5\u8BA9\u60A8\u5728 10 \u5206\u949F\u5185\u8F7B\u677E\u638C\u63E1 Markdown \n\n### \u7B2C\u4E09\u9875\n\n";
     this.markdown = localStorage.markdown || defaultNote; // 预加载
 
     this.bind();
@@ -251,11 +305,101 @@ var Editor = {
     Reveal.initialize({
       controls: true,
       progress: true,
-      center: true,
+      center: localStorage.align === "left-top" ? false : true,
       hash: true,
+      transition: localStorage.transition || 'slide',
       // Learn about plugins: https://revealjs.com/plugins/
       plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight]
     });
+  }
+};
+var Theme = {
+  init: function init() {
+    this.$$figures = $$('.themes figure');
+    this.$transition = $('.transition');
+    this.$align = $('.theme .align');
+    this.$reveal = $('.reveal');
+    console.log(this.$reveal);
+    this.bind();
+    this.loadTheme();
+  },
+  bind: function bind() {
+    var _this3 = this;
+
+    this.$$figures.forEach(function ($figure) {
+      return $figure.onclick = function () {
+        _this3.$$figures.forEach(function ($item) {
+          return $item.classList.remove('select');
+        });
+
+        $figure.classList.add('select');
+
+        _this3.setTheme($figure.dataset.theme);
+      };
+    });
+
+    this.$transition.onchange = function () {
+      localStorage.transition = this.value;
+      location.reload();
+    };
+
+    this.$align.onchange = function () {
+      localStorage.align = this.value;
+      location.reload();
+    };
+  },
+  setTheme: function setTheme(theme) {
+    localStorage.theme = theme;
+    location.reload();
+  },
+  loadTheme: function loadTheme() {
+    var theme = localStorage.theme || 'blood';
+    var $link = document.createElement('link');
+    $link.rel = 'stylesheet';
+    $link.href = "dist/theme/".concat(theme, ".css");
+    $link.id = "theme";
+    document.head.appendChild($link);
+    $(".themes figure[data-theme = ".concat(theme, "]")).classList.add('select'); // [...this.$$figures].find($figure => $figure.dataset.theme === theme).classList.add('select')
+
+    this.$transition.value = localStorage.transition || 'slide';
+    this.$align.value = localStorage.align || 'center';
+    this.$reveal.classList.add(this.$align.value);
+    console.log(this.$align.value);
+  }
+};
+var Print = {
+  init: function init() {
+    this.$download = $('.download');
+    this.bind();
+    this.start();
+  },
+  bind: function bind() {
+    this.$download.addEventListener('click', function () {
+      var $link = document.createElement('a');
+      $link.setAttribute('target', '_blank');
+
+      if (location.href.includes('#/')) {
+        $link.setAttribute('href', location.href.replace(/#\/.+/, '?print-pdf'));
+      } else {
+        $link.setAttribute('href', location.href + '?print-pdf');
+      }
+
+      $link.click();
+    });
+  },
+  start: function start() {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+
+    if (window.location.search.match(/print-pdf/gi)) {
+      link.href = 'css/print/pdf.css';
+      window.print();
+    } else {
+      link.href = 'css/print/paper.css';
+    }
+
+    document.head.appendChild(link);
   }
 };
 var App = {
@@ -266,7 +410,7 @@ var App = {
     });
   }
 };
-App.init(Menu, Editor); // 初始化 App 的时候也初始化 menu
+App.init(Menu, Editor, Theme, Print, ImgUpload); // 初始化 App 的时候也初始化 menu
 },{}],"../../AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -295,7 +439,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55598" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63294" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

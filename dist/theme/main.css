@@ -166,3 +166,30 @@ textarea {
 .menu .theme .h2-Animation {
     margin-bottom: 10px;
     }
+
+*{
+    outline: 1px solid #0000ff;
+    }
+
+.menu .editor .label.uploader {
+    cursor: pointer;
+    margin: 0 5px;
+    background: #48484e;
+    color: #d9dfdf;
+    border-radius: 4px;
+    padding: 4px 6px;
+    opacity: .65;
+    transition: all .1s;
+    }
+
+.menu .editor .label.uploader:hover {
+    opacity: 1;
+    }
+
+.menu .editor [type=file] {
+    display: none;
+    }
+
+.menu .editor .content .btn-save {
+    margin-right: 5px;
+    }

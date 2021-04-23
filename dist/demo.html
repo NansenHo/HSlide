@@ -14,17 +14,18 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/demo.b93e0b06.css">
-    <link rel="stylesheet" href="/demo.cfd37dc0.css">
+    <link rel="stylesheet" href="/reset.61d817b8.css">
+    <link rel="stylesheet" href="/reveal.c606e89d.css">
     <!--    <link rel="stylesheet" href="dist/theme/blood.css" id="theme">-->
     <!-- reset.css & reveal.css & theme/black.css-->
 
-    <link rel="stylesheet" href="/demo.984dd632.css">
+    <link rel="stylesheet" href="/main.6f413603.css">
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2491630_sfdtd7ltxdb.css">
 
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="/demo.41a7529f.css" id="highlight-theme">
-</head>
+    <link rel="stylesheet" href="/monokai.4291b03f.css" id="highlight-theme">
+
+<script src="/reset.61d817b8.js"></script><script src="/reveal.c606e89d.js"></script><script src="/main.6f413603.js"></script><script src="/monokai.4291b03f.js"></script></head>
 
 <body>
 
@@ -42,7 +43,7 @@
             <span class="iconfont icon-theme"></span>
             主题与特效
         </div>
-        <div class="tab">
+        <div class="tab download">
             <span class="iconfont icon-download"></span>
             下载PDF
         </div>
@@ -52,6 +53,10 @@
                 <textarea></textarea>
                 <div>
                     <button class="btn-save">save</button>
+                    <label class="label uploader">
+                        Choose images to upload
+                        <input type="file" accept="image/*" class="input-file">
+                    </label>
                 </div>
             </div>
         </div>
@@ -60,48 +65,48 @@
             <div class="body theme">
                 <h2>Theme</h2>
                 <div class="themes">
-                    <figure data-theme="beige">
-                        <img src="/beige.0676ffc8.jpeg" alt="beige">
-                        <figcaption>beige</figcaption>
-                    </figure>
-                    <figure data-theme="black">
-                        <img src="/black.5267b69f.jpeg" alt="black">
-                        <figcaption>black</figcaption>
-                    </figure>
                     <figure data-theme="blood">
-                        <img src="/blood.88a9e852.jpeg" alt="blood">
+                        <img src="/blood.d1e95541.jpeg" alt="blood">
                         <figcaption>blood</figcaption>
                     </figure>
+                    <figure data-theme="black">
+                        <img src="/black.ab7958cc.jpeg" alt="black">
+                        <figcaption>black</figcaption>
+                    </figure>
+                    <figure data-theme="night">
+                        <img src="/night.367b54d6.jpeg" alt="night">
+                        <figcaption>night</figcaption>
+                    </figure>
                     <figure data-theme="league">
-                        <img src="/league.35589ea6.jpeg" alt="league">
+                        <img src="/league.2711249a.jpeg" alt="league">
                         <figcaption>league</figcaption>
                     </figure>
                     <figure data-theme="moon">
-                        <img src="/moon.0023599f.jpeg" alt="moon">
+                        <img src="/moon.a8767872.jpeg" alt="moon">
                         <figcaption>moon</figcaption>
                     </figure>
-                    <figure data-theme="night">
-                        <img src="/night.54a7f9af.jpeg" alt="night">
-                        <figcaption>night</figcaption>
+                    <figure data-theme="sky">
+                        <img src="/sky.9c4afb51.jpeg" alt="sky">
+                        <figcaption>sky</figcaption>
+                    </figure>
+                    <figure data-theme="beige">
+                        <img src="/beige.c4ca0989.jpeg" alt="beige">
+                        <figcaption>beige</figcaption>
                     </figure>
                     <figure data-theme="serif">
-                        <img src="/serif.0727c326.jpeg" alt="serif">
+                        <img src="/serif.9ced4783.jpeg" alt="serif">
                         <figcaption>serif</figcaption>
                     </figure>
                     <figure data-theme="simple">
-                        <img src="/simple.9e4c746c.jpeg" alt="simple">
+                        <img src="/simple.408ccaa0.jpeg" alt="simple">
                         <figcaption>simple</figcaption>
                     </figure>
-                    <figure data-theme="sky">
-                        <img src="/sky.a378b332.jpeg" alt="sky">
-                        <figcaption>sky</figcaption>
-                    </figure>
                     <figure data-theme="solarized">
-                        <img src="/solarized.8f800101.jpeg" alt="solarized">
+                        <img src="/solarized.8c6f3afc.jpeg" alt="solarized">
                         <figcaption>solarized</figcaption>
                     </figure>
                     <figure data-theme="white">
-                        <img src="/white.597c29f3.jpeg" alt="white">
+                        <img src="/white.931616c3.jpeg" alt="white">
                         <figcaption>white</figcaption>
                     </figure>
                 </div>
@@ -113,6 +118,11 @@
                     <option value="concave">concave</option>
                     <option value="zoom">zoom</option>
                     <option value="none">none</option>
+                </select>
+                <h2>Align</h2>
+                <select class="align">
+                    <option value="center">center</option>
+                    <option value="left-top">left-top</option>
                 </select>
             </div>
         </div>
@@ -130,14 +140,18 @@
     </div>
 </div>
 
-<script src="/demo.291785ff.js"></script>
-<script src="/demo.c241af47.js"></script>
-<script src="/demo.39dab547.js"></script>
-<script src="/demo.4ecedc03.js"></script>
-<script src="/demo.103312aa.js"></script>
-<script src="/demo.8186fbba.js"></script>
+<script src="/reveal.3d4e1a1d.js"></script>
+<script src="/zoom.e984e63e.js"></script>
+<script src="/notes.9c1da4eb.js"></script>
+<script src="/search.2e98e5dc.js"></script>
+<script src="/markdown.976507c4.js"></script>
+<script src="/highlight.e74c7d95.js"></script>
 
-<script src="/demo.74f86353.js"></script>
+<script src="/main.fb6bbcaf.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.10.1/dist/av-min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/leancloud-realtime@5.0.0-rc.5/dist/im-browser.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@4.2.0/dist/av-min.js"></script>
 
 </body>
 </html>
