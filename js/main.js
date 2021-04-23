@@ -100,15 +100,15 @@ const Menu = { // menu 模块
 
 const ImgUpload = {
     init() {
-        this.$fileInput = $('.input-file')
+        this.$fileInput = $('#img-uploader')
         this.$textarea = $('.editor textarea')
         console.log(this.$fileInput);
 
         AV.init({
             appId: "JXVpQHen5GQwmLawXs2voCvu-gzGzoHsz",
             appKey: "29rOT3C7WRXnFCji5jBazfWF",
-            serverURLs: "https://jxvpqhen.lc-cn-n1-shared.com"
-        })
+            serverURL: "https://jxvpqhen.lc-cn-n1-shared.com"
+        });
 
         this.bind()
     },

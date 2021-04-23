@@ -167,10 +167,6 @@ textarea {
     margin-bottom: 10px;
     }
 
-*{
-    outline: 1px solid #0000ff;
-    }
-
 .menu .editor .label.uploader {
     cursor: pointer;
     margin: 0 5px;
