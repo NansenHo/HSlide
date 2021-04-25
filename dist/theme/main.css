@@ -1,17 +1,32 @@
 * {
     box-sizing: border-box;
-    }
+}
+
+/** {*/
+/*    outline: 1px solid rgb(243, 230, 0);*/
+/*}*/
+
 *:before, *:after {
     box-sizing: border-box;
-    }
+}
+
+* {
+    font-family: inherit;
+}
+
+* {
+    font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+}
+
 button {
     outline: none;
     border: none;
-    }
+}
+
 textarea {
     border: none;
     outline: none;
-    }
+}
 
 /* control */
 .control {
@@ -23,24 +38,23 @@ textarea {
     opacity: 0;
     z-index: 1;
     transition: 0.6s;
-    }
+}
 
-.control .iconfont {
+.control .icon-setting {
     display: inline-block;
-    font-size: 50px;
+    font-size: 80px;
     color: #ffffff;
     margin: 30px;
     cursor: pointer;
-    }
+}
 
 .control:hover {
     opacity: 0.88;
-    }
-
+}
 
 .reveal.left-top .slides section {
     text-align: left;
-    }
+}
 
 /* menu */
 .menu {
@@ -49,100 +63,104 @@ textarea {
     z-index: 20;
     width: 220px;
     height: 100vh;
-    background: #252f2d;
+    background: #2a292a;
     color: #747c7c;
     font-size: 16px;
     transform: translateX(-100%); /* 100% 即，元素自己的宽度 */
     transition: transform .3s;
-    }
+}
 
 .menu.open {
     transform: translateX(0);
-    }
+}
 
 .menu .icon-close {
     position: absolute;
-    right: 10px;
+    left: 10px;
     top: 10px;
     cursor: pointer;
-    }
+    color: #ed6a5f;
+}
 
 .menu .detail {
     margin-top: 50px;
-    }
+}
 
 .menu .detail .tab {
     display: flex;
     align-items: center;
     padding: 8px 20px;
     cursor: pointer;
-    }
+}
 
 .menu .detail .tab.active {
     color: #fff;
-    }
+}
 
 .menu .detail .iconfont {
     margin-right: 4px;
-    }
+}
 
 .menu .detail .content {
     position: absolute;
     left: 220px;
     width: calc(100vw - 220px);
     height: 100vh;
-    background: #212a29;
+    background: #1e1c1f;
     color: #fff;
     top: 0;
     transform: translateX(100vw);
     transition: transform .3s;
     overflow: scroll;
-    }
+}
 
 .menu.open .detail .content.active { /* .menu.open 且 .content.active ，才会有下面的样式 */
     transform: translateX(0);
-    }
+}
 
 .menu .detail .content .header {
     font-size: 40px;
+    font-weight: bolder;
     padding: 20px;
-    border-bottom: 1px solid #435315;
-    }
+    border-bottom: 1px solid rgba(122,124,124,.65);
+}
 
 .menu .detail .content .body {
     padding: 20px;
-    }
+}
 
 .menu .detail .content textarea {
     width: 100%;
     height: 400px;
     padding: 20px;
-    background: #131723;
+    background: #2a292a;
     color: #fff;
     border-radius: 15px;
     font-size: 16px;
-    }
+}
 
 .menu .detail .content .btn-save {
     background: #48484e;
     color: #d9dfdf;
     border-radius: 4px;
     padding: 6px 8px;
+    font-size: 18px;
     opacity: .65;
     cursor: pointer;
     transition: all .1s;
     margin-top: 12px;
-    }
+    margin-left: 10px;
+}
 
 .menu .detail .content .btn-save:hover {
     opacity: 1;
-    }
+}
 
 .menu .detail .content .themes {
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
-    }
+}
 
 .menu .detail .content figure {
     margin-bottom: 10px;
@@ -151,41 +169,50 @@ textarea {
     text-align: center;
     border: 4px transparent solid;
     transition: .3s;
-    }
+}
 
-.menu .detail .content figure img{
+.menu .detail .content figure img {
     width: 160px;
     height: 120px;
-    }
+}
 
 .menu .detail .content figure.select {
     border: 4px white solid;
     cursor: pointer;
-    }
+}
 
 .menu .theme .h2-Animation {
     margin-bottom: 10px;
-    }
+}
 
 .menu .editor .label.uploader {
-    cursor: pointer;
-    margin: 0 5px;
-    background: #48484e;
+    margin-left: 12px;
     color: #d9dfdf;
-    border-radius: 4px;
-    padding: 4px 6px;
     opacity: .65;
+    cursor: pointer;
     transition: all .1s;
-    }
+}
+
+.menu .editor .save-upload {
+
+}
 
 .menu .editor .label.uploader:hover {
     opacity: 1;
-    }
+}
 
 .menu .editor [type=file] {
     display: none;
-    }
+}
 
 .menu .editor .content .btn-save {
     margin-right: 5px;
-    }
+}
+
+.menu .detail .iconfont {
+    font-size: 18px;
+}
+
+.menu .detail .tab {
+    font-size: 16px;
+}
