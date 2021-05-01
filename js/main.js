@@ -156,15 +156,13 @@ const Editor = {
         this.$editInput = $('.editor textarea')
         this.$saveBtn = $('.editor .btn-save')
         this.$slideContainer = $('.slides')
-        let defaultNote = `
-# One Slide
+        let defaultNote = `# One Slide
 开始使用，请将鼠标放至页面左上角
 
 ## 本产品需要用 markdown 来编辑
 该[教程](https://www.jianshu.com/p/191d1e21f7ed)可以让您在 10 分钟内轻松掌握 Markdown 
 
 ### 第三页
-
 `
         this.markdown = localStorage.markdown || defaultNote // 预加载
         this.bind()
