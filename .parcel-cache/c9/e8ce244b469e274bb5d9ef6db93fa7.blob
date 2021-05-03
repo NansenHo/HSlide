@@ -38,7 +38,6 @@ textarea {
     opacity: 0;
     z-index: 1;
     transition: 0.6s;
-    cursor: pointer;
 }
 
 .control .setting {
@@ -46,6 +45,7 @@ textarea {
     width: 35px;
     height: 35px;
     margin: 30px;
+    cursor: pointer;
 }
 
 .control:hover {
@@ -130,7 +130,7 @@ textarea {
     font-size: 40px;
     font-weight: bold;
     padding: 20px;
-    border-bottom: 1px solid rgba(122, 124, 124, .65);
+    border-bottom: 1px solid rgba(122,124,124,.65);
 }
 
 .menu .detail .content .body {
@@ -150,9 +150,9 @@ textarea {
 .menu .detail .content .btn-save {
     background: #48484e;
     color: #d9dfdf;
-    border-radius: 5px;
-    padding: 7px 14px;
-    font-size: 16px;
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 18px;
     opacity: .65;
     cursor: pointer;
     transition: all .1s;
@@ -195,6 +195,10 @@ textarea {
     cursor: pointer;
 }
 
+.menu .detail .content figure.select figcaption {
+
+}
+
 .menu .editor .label.uploader {
     margin-left: 12px;
     color: #d9dfdf;
@@ -233,35 +237,14 @@ textarea {
     margin-bottom: 20px;
 }
 
-.transition-position-div {
-    width: 118px;
-    height: 34px;
-    position: relative;
-}
-
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    width: 100%;
-    height: 100%;
-    line-height: 32px;
+    width: 100px;
+    height: 34px;
     background-color: #2a292a;
-    color: #fff;
-    font-size: 16px;
-    padding-left: 30px;
-    cursor: pointer;
-}
-
-.h2-Animation {
-    margin-top: 10px;
-}
-
-.position-h2 {
-    margin-top: 30px;
+    border: ;
 }
 
 select::-ms-expand {

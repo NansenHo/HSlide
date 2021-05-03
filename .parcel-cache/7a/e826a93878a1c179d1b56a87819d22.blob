@@ -71,7 +71,7 @@ const convert = raw => {
 const Menu = { // menu 模块
     init() {
         console.log('menu init...')
-        this.$settingIcon = $('.control')
+        this.$settingIcon = $('.control .setting')
         this.$menu = $('.menu')
         this.$closeIcon = $('.menu .icon-close')
         this.$$tabs = $$('.menu .tab')
