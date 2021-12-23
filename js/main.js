@@ -70,7 +70,6 @@ const convert = raw => {
 
 const Menu = { // menu 模块
     init() {
-        console.log('menu init...')
         this.$settingIcon = $('.control')
         this.$menu = $('.menu')
         this.$closeIcon = $('.menu .icon-close')
@@ -102,8 +101,6 @@ const ImgUpload = {
     init() {
         this.$fileInput = $('#img-uploader')
         this.$textarea = $('.editor textarea')
-        console.log(this.$fileInput);
-
         AV.init({
             appId: "JXVpQHen5GQwmLawXs2voCvu-gzGzoHsz",
             appKey: "29rOT3C7WRXnFCji5jBazfWF",
@@ -117,7 +114,6 @@ const ImgUpload = {
         this.$fileInput.onchange = function () {
             if (this.files.length > 0) {
                 let localFile = this.files[0]
-                console.log(localFile)
                 if (localFile.size / 1048576 > 2) {
                     alert('文件不能超过2M')
                     return
@@ -152,7 +148,6 @@ const ImgUpload = {
 
 const Editor = {
     init() { // 初始化
-        console.log('editor init...')
         this.$editInput = $('.editor textarea')
         this.$saveBtn = $('.editor .btn-save')
         this.$slideContainer = $('.slides')
@@ -161,8 +156,6 @@ const Editor = {
 
 ## 本产品需要用 markdown 来编辑
 该[教程](https://www.jianshu.com/p/191d1e21f7ed)可以让您在 10 分钟内轻松掌握 Markdown 
-
-### 第三页
 `
         this.markdown = localStorage.markdown || defaultNote // 预加载
         this.bind()
@@ -230,7 +223,7 @@ const Theme = {
         this.$transition.value = localStorage.transition || 'slide'
         this.$align.value = localStorage.align || 'center'
         this.$reveal.classList.add(this.$align.value)
-        console.log(this.$align.value);
+        console.log(this.$align.value, "value");
     }
 }
 
