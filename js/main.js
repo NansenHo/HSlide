@@ -151,7 +151,7 @@ const Editor = {
         this.$editInput = $('.editor textarea')
         this.$saveBtn = $('.editor .btn-save')
         this.$slideContainer = $('.slides')
-        let defaultNote = `# One Slide
+        let defaultNote = `# HSlide
 开始使用，请将鼠标放至页面左上角
 
 ## 本产品需要用 markdown 来编辑
@@ -253,7 +253,7 @@ const Print = {
             link.href = 'css/print/pdf.css'
             window.print()
         } else {
-            link.href = 'css/print/paper.css'
+            link.href = 'css/print/paper.scss'
         }
         document.head.appendChild(link)
     }
