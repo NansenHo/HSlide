@@ -102,11 +102,10 @@ const ImgUpload = {
         this.$fileInput = $('#img-uploader')
         this.$textarea = $('.editor textarea')
         AV.init({
-            appId: "JXVpQHen5GQwmLawXs2voCvu-gzGzoHsz",
-            appKey: "29rOT3C7WRXnFCji5jBazfWF",
-            serverURL: "https://jxvpqhen.lc-cn-n1-shared.com"
+            appId: "UqBaAsQMqOQB3rLwNGLTKtOF-gzGzoHsz",
+            appKey: "uv9EyQmkgX7UjUt4TeVUBhVa",
+            serverURLs: "https://uqbaasqm.lc-cn-n1-shared.com"
         });
-
         this.bind()
     },
     bind() {
@@ -173,7 +172,7 @@ const Editor = {
         Reveal.initialize({
             controls: true,
             progress: true,
-            center: localStorage.align === "left-top" ? false : true,
+            center: localStorage.align !== "left-top",
             hash: true,
             transition: localStorage.transition || 'slide',
             // Learn about plugins: https://revealjs.com/plugins/
@@ -188,7 +187,6 @@ const Theme = {
         this.$transition = $('.transition')
         this.$align = $('.theme .align')
         this.$reveal = $('.reveal')
-        console.log(this.$reveal);
         this.bind()
         this.loadTheme()
     },
@@ -223,7 +221,6 @@ const Theme = {
         this.$transition.value = localStorage.transition || 'slide'
         this.$align.value = localStorage.align || 'center'
         this.$reveal.classList.add(this.$align.value)
-        console.log(this.$align.value, "value");
     }
 }
 
