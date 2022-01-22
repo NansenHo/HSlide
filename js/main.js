@@ -248,7 +248,9 @@ const Print = {
         link.type = 'text/css'
         if (window.location.search.match(/print-pdf/gi)) {
             link.href = 'css/print/pdf.css'
-            window.print()
+            setTimeout(()=>{
+                window.print()
+            }, 2000)
         } else {
             link.href = 'css/print/paper.scss'
         }
